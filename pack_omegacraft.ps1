@@ -1,16 +1,20 @@
 $time = Get-Date -UFormat %H%M%S
 $date = Get-Date -UFormat %Y%m%d
 $timestamp = $date + "T" + $time
-$zipfile = "omegacraft14.zip"
+$zipfile = "omegacraft115.zip"
 #$location = "Q:\games\Minecraft\textureedit"
 $zip = ".\release\" + $zipfile
 $backuppath = ".\backup\"
-$destination = $backuppath + "backup_omegacraft14_" + $timestamp + ".zip"
-$working = ".\omegacraft14"
+$destination = $backuppath + "backup_omegacraft115_" + $timestamp + ".zip"
+$working = ".\omegacraft115"
 $git = "."
 $daysback = "-5"
 $currentdate = Get-Date
 $datetodelete = $currentdate.AddDays($daysback)
+
+if (!(Test-Path $working)){
+	New-Item -Path . -Name $working -ItemType "directory"
+	}
 
 if (!(Test-Path "./backup")){
 	New-Item -Path . -Name "backup" -ItemType "directory"
@@ -63,6 +67,6 @@ if (!(Test-Path "./release")){
 	# ssh -p 23466 root@www 'chown -v snipeitapp:apache /var/www/snipeit/public/minecraft/omegacraft14.zip'
 	# Write-Host "`nCopied to web server."
 
-#Write-Host "`nPress any key to continue...";
-#$null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');
+# Write-Host "`nPress any key to continue...";
+# $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');
 
