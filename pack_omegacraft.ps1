@@ -59,8 +59,13 @@ if (!(Test-Path "./release")){
 	Write-Host "`nSHA1 Hash copied to clipboard."
 
 # Copy resource pack to resource pack folder
-	Copy-Item $zip -Destination "$env:appdata\.minecraft\resourcepacks" -Force
-	Write-Host "`nCopied $zip to Minecraft resourcepacks folder."
+	try {	
+		Copy-Item $zip -Destination "$env:appdata\.minecraft\resourcepacks" -Force
+		Write-Host "`nCopied $zip to Minecraft resourcepacks folder."
+	}
+	catch {
+		Write-Host "`nCopy to resource pack folder failed.  Is Minecraft installed?"
+	}
 
 # Send the resource pack to the server
 	# scp -P 23466 $zip root@www:/var/www/snipeit/public/minecraft
